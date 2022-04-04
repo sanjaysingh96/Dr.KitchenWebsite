@@ -1,0 +1,75 @@
+﻿@model RestaurantProject.Models.UserRegModel
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <link href="~/Content/LoginCss/style.css" rel="stylesheet" />
+
+</head>
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="logo text-center">
+        <h1>
+            <img src="~/Content/images/logo.png" />
+        </h1>
+    </div>
+    <div class="wrapper">
+        <div class="inner-warpper text-center">
+            <h2 class="title">Create Your Account</h2>
+            @using (Html.BeginForm("UserReg", "Home", FormMethod.Post))
+            {
+                <div class="input-group">
+                    <label class="palceholder" for="userName">Mobile</label>
+                    @*<input class="form-control" name="userName" id="userName" type="text" placeholder="" />*@
+                    @Html.TextBoxFor(b => b.Phone_Number, new { @required = "required", @class = "form-control" })
+                    <span class="lighting"></span>
+                </div>
+                <div class="input-group">
+                    <label class="palceholder" for="userPassword">Name</label>
+                    @*<input class="form-control" name="userPassword" id="userPassword" type="text" placeholder="" />*@
+                    @Html.TextBoxFor(b => b.Name, new { @required = "required", @class = "form-control" })
+                    <span class="lighting"></span>
+                </div>
+
+                <div class="input-group">
+                    <label class="palceholder" for="userPassword">Email</label>
+                    @*<input class="form-control" name="userPassword" id="userPassword" type="email" placeholder="" />*@
+                    @Html.TextBoxFor(b => b.Email, new { @required = "required", @class = "form-control" })
+                    <span class="lighting"></span>
+                </div>
+
+                <div class="input-group">
+                    <label class="palceholder" for="userPassword">Password</label>
+                    @*<input class="form-control" name="userPassword" id="userPassword" type="password" placeholder="" />*@
+                    @Html.PasswordFor(b => b.Password, new { @required = "required", @class = "form-control" })
+                    <span class="lighting"></span>
+                </div>
+
+                <button type="submit" id="login">SingUp</button><br />
+                <a href="@Url.Action("Index","Home")">Back To Home Page</a>
+            }
+        </div>
+        <div class="signup-wrapper text-center">
+            <span>Already have an accout? </span>
+            <a href="@Url.Action("Login","Home")"><span class="text-primary">Login Here</span></a>
+        </div>
+    </div>
+    
+
+    <!-- partial -->
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js'></script>
+
+    <script src="~/Scripts/LoginJS/script.js"></script>
+
+</body>
+</html>

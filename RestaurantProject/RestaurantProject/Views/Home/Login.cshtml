@@ -1,0 +1,83 @@
+﻿@model RestaurantProject.Models.UserRegModel
+
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    
+    <link href="~/Content/LoginCss/style.css" rel="stylesheet" />
+    <style>
+        .error{
+            color:red;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="logo text-center">
+        <h1>
+            <img src="~/Content/images/logo.png" />
+        </h1>
+    </div>
+    <div class="wrapper">
+        <div class="inner-warpper text-center">
+            <h2 class="title">Login to your account</h2>
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+            {
+
+                <div class="input-group">
+                    <label class="palceholder" for="userName">Email</label>
+                    @*<input class="form-control" name="userName" id="userName" type="text" placeholder="" />*@
+                    @Html.TextBoxFor(a => a.Email, new { @class = "form-control", @required = "required" })
+                    @*@Html.ValidationMessageFor(m=>m.Email,"",new { @class="error"})*@
+                    <div class="error">@TempData["invalid"]</div>
+                    <span class="lighting"></span>
+                </div>
+
+                <div class="input-group">
+                    <label class="palceholder" for="userPassword">Password</label>
+                    @*<input class="form-control" name="userPassword" id="userPassword" type="password" placeholder="" />*@
+                    @Html.PasswordFor(a => a.Password, new { @class = "form-control", @required = "required" })
+                    @*@Html.ValidationMessageFor(m => m.Password, "", new { @class = "error" })*@
+                    <div class="error">@TempData["wrong"]</div>
+                    <span class="lighting"></span>
+                </div>
+
+                <button type="submit" id="login">Login</button>
+                <div class="clearfix supporter">
+                    <div class="pull-left remember-me">
+                        <input id="rememberMe" type="checkbox">
+                        <label for="rememberMe">Remember Me</label>
+                    </div>
+                    <a class="forgot pull-right" href="#">Forgot Password?</a>
+                </div>
+                <br />
+                <a href="@Url.Action("Index","Home")">Back To Home Page</a>
+            }
+        </div>
+        <div class="signup-wrapper text-center">
+            <span>Don't have an accout? </span>
+            <a href="@Url.Action("UserReg","Home")"><span class="text-primary">Create Account</span></a>
+        </div>
+    </div>
+    <div>
+    </div>
+
+    <!-- partial -->
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js'></script>
+
+    <script src="~/Scripts/LoginJS/script.js"></script>
+
+</body>
+</html>
+
